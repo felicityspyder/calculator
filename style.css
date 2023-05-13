@@ -1,0 +1,16 @@
+html {
+  background-color: aliceblue;
+}
+
+html,body {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  font-size: large;
+
+
+}
