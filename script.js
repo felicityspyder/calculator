@@ -39,23 +39,21 @@ return total;
 };
 
 let a; 
-let operator;
-let b
+let operator = ["=", "-", "*", "/",];
+let b;
 
-function operate() {
+
+function operate(a, b, operator) {
     switch(operator) {
         case '+':  
-            add(a, b);
-            break;
+            return add(a, b);
         case '-':
-            subtract(a, b);
-            break;
+            return subtract(a, b);
         case '*':
-            multiply(a, b);
-            break;
+            return multiply(a, b);
         case "/":
-            divide(a, b);
-            break;
+            return divide(a, b);
     } 
 }
 
+console.log(operate())
