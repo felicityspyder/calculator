@@ -1,39 +1,47 @@
-const body = document.querySelector('body');
-const container = document.createElement('div');
-container.classList.add("container");
-body.appendChild(container);
+/*
+function clearAll() {
+    this.currentOperand = '';
+    this.previousOperand = '';
+    this.operation = undefined; 
+}
+
+clearAll.addEventListener('click', button => {
+    calculator.clear();
+    calculator.updateDisplay();
+})
+
+class Calculator {
+    constructor(a, b) {
+        this.a = a;
+        this.b = b;
+        clearAll();
+    }
+
+}
+*/
 
 const add = function(a, b) {
-    return a + b;	
-  };
-  
-  const subtract = function(a, b) {
-      return a - b;
-  };
-  
-const sum = function(a) {
-let total = 0;
-for (let i = 0; i < a.length; i++) {
-    total += a[i];
-};
-return total;
-};
-  
-const multiply = function(a) {
-let total = 1;
-for (let i = 0; i < a.length; i++) {
-    total = total * a[i];
+    return a + b;
+    
 }
-return total;
-};
+  
+const subtract = function(a, b) {
+      return a - b;
+}
+  
+
+const multiply = function(a, b) {
+    return a * b;
+}
 
 const divide = function(a, b) {
-return a / b;
+    return a / b;
 }
   
 const power = function(a, b) {
-return a ** b;
-};
+    let total = a ** b;
+    return total;
+}
   
 const factorial = function(a) {
     let total = 1;
@@ -43,17 +51,20 @@ for (let i = 2; i <= a; i++) {
 return total;
 };
 
-const numberButtons = document.querySelectorAll('[data-number]');
-const operatorButtons = document.querySelectorAll('[data-operator]');
-const equalsButton = document.querySelector('[data=equals]');
-const deleteButton = document.querySelector('[data-delete]');
-const allClearButton = document.querySelector('[data-all-clear]');
-const previousOperandTextElement = document.querySelector('[data-previous-operand]');
-const currentOperandTextElement = document.querySelector('[data-current-operand]');
+
+const inputs = document.querySelectorAll('input[value].data-number');
+const displayValue = inputs.forEach(function(input) {
+    input.addEventListener("click", function() {
+        document.getElementById('current-operand').textContent = input.value
+    });
+});
 
 
-function operate(a, b, operator) {
-    switch(operator) {
+let b = document.querySelectorAll('button[data-number]');
+let operation = document.querySelectorAll('button[data-operator]');
+
+function operate(a, b, operation) {
+    switch(operation) {
         case '+':  
             return add(a, b);
         case '-':
@@ -64,22 +75,58 @@ function operate(a, b, operator) {
             return divide(a, b);
     } 
 }
-// populate display when clicking number buttons
-function currentValue(e) {
-const value = document.querySelector('button');
-console.log(value);
+
+// Write a function to clear the display 
+
+
+
+// const calculator = new Calculator(a, b);
+
+
+// write a function to delete a single number
+/*
+function del() {
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
 }
 
-currentValue();
+deleteButton.addEventListener('click', button => {
+    calculator.del();
+    calculator.updateDisplay();
+})
 
-// const previousValue = document.querySelector(`button[data-key=${e.keycode}]`);
-
-function currentOperand () {
-
+function appendNumber(number) {
+    if (number === "." && this.currentOperand.includes('.')) {
+        return;
+    } 
+    this.currentOperand = this.currentOperand.toString() + number.toString()
 }
 
-function previousOperand () {
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
+    });
+})
 
+function chooseOperation(operation) {
+    if (this.currentOperand === '') {
+        return;
+    } if (this.previousOperand !== '') {
+        this.compute()
+    }
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = '';
 }
+operatorButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation('button[data-number]'.innerText)
+        calculator.updateDisplay();
+    })
+})
 
-console.log(operate())
+function updateDisplay() {
+    this.b.innerText = this.currentOperand;
+    this.a = this.previousOperand;
+}
+*/
